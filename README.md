@@ -7,17 +7,19 @@ It will scrape the target website and output a csv file to './states/'.
 To use script, make sure python is installed
 - Python 3.6+
 
-1. Create a virtual environment
+1. Clone the repository and navigate into the root of the folder
+
+2. Create a virtual environment
 `python3 -m venv venv`
 
-2. Activate the virtual environment:
+3. Activate the virtual environment:
 - Windows: `.\venv\Scripts\Activate`
 - Mac/Linux: `source venv/bin/activate`
 
-3. Install script dependencies
+4. Install script dependencies
 `pip install -r requirements.txt`
 
-4. Run the script with arguments
+5. Run the script with arguments
 `python scrape.py`
  - Or run an individual state: `python scrape.py --state "West Virginia"`
 

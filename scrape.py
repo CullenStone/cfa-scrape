@@ -5,6 +5,7 @@ import pandas as pd
 import argparse
 import us
 import json
+import time
 
 # 1. Open webpage
 # 2. Check if it needs to authorize/agree to terms
@@ -12,6 +13,20 @@ import json
 # 4. Get the total number of pages
 # 5. Scrape current page -> parse and throw in a data frame
 # 6. Go to next page
+
+def login(driver, username, password):
+    """
+        We will use the command line user name and password
+    """
+    login_url = "https://directory.cfainstitute.org/account/login?returnUrl=https://directory.cfainstitute.org/"
+    
+    driver.get(login_url)
+    time.sleep(2)
+    driver.find_element(By.XPATH, '//input[@id="email_withoutPattern"]').send_keys(username)
+
+    next_button = driver.find_element(By.ID, 'next')
+    next_button.click()
+
 
 def authorize(driver):
     """
@@ -73,6 +88,9 @@ def main(args):
     # Loop through the states here
     driver = webdriver.Chrome(ChromeDriverManager().install())
     # Figure out which states have been scraped
+
+    # We need to log in here
+    login(driver, 'cullen.stone@macom.com', 'the')
     
     #driver.maximize_window()
     states = [state.name for state in us.states.STATES_AND_TERRITORIES] if args.state is None else [args.state]
