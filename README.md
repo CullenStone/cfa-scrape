@@ -2,7 +2,7 @@
 This reads items (states) that are not currently in the file 'scraped.json'. 
 - Make sure to check this file and remove states if you want to re-scrape it.
 
-It will scrape the target website, output a csv file to ./states/, with the name of the state.
+It will scrape the target website and output a csv file to './states/'.
 
 To use script, make sure python is installed
 - Python 3.6+
