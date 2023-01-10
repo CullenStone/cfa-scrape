@@ -26,6 +26,14 @@ def login(driver, username, password):
 
     next_button = driver.find_element(By.ID, 'next')
     next_button.click()
+    
+    time.sleep(3)
+
+    driver.find_element(By.XPATH, '//input[@id="password"]').send_keys(password)
+    submit_button = driver.find_element(By.ID, 'next')
+    submit_button.click()
+
+
 
 
 def authorize(driver):
@@ -90,7 +98,9 @@ def main(args):
     # Figure out which states have been scraped
 
     # We need to log in here
-    login(driver, 'cullen.stone@macom.com', 'the')
+    login(driver, args.username, args.password)
+
+    time.sleep(3)
     
     #driver.maximize_window()
     states = [state.name for state in us.states.STATES_AND_TERRITORIES] if args.state is None else [args.state]
@@ -158,6 +168,8 @@ def main(args):
 if __name__ == '__main__':
 
     parse = argparse.ArgumentParser(description="This will scrape for names")
+    parse.add_argument('-u', '--username', dest='username', type=str, required = True, help="The username of the account")
+    parse.add_argument('-p', '--password', dest='password', type=str, required = True, help="The password of the account")
     parse.add_argument('--state', '-s', dest='state', type=str, default=None)
 
     args = parse.parse_args()
