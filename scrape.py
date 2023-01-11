@@ -139,7 +139,7 @@ def main(args):
             dfs.append(df2)
             if len(three_elements) > 0:
                 df3 = pd.DataFrame.from_dict(three_elements, orient='index')
-                df3.insert(1, 'Position', 0)
+                df3.insert(1, 'Company', 0)
                 dfs.append(df3)
             df4 = pd.DataFrame.from_dict(four_elements, orient='index')
             dfs.append(df4)
